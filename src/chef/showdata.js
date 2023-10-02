@@ -1,36 +1,42 @@
 
-const jobs = [
-    {
-        nameOfJob: "el tazumal",
-        position: "Chef",
-    },
-    {
-        nameOfJob: "el niña sonia",
-        position: "Mesera",
-    },
-    {
-        nameOfJob: "el La pampa",
-        position: "Chef Master",
-    },
-]
 
+document.addEventListener('DOMContentLoaded', function() {
 
-const orantes = new Chef({
-    name: "Stephanie",
-    lastName: "Orantes",
-    age: 16,
-    phoneNumber: 25252525,
-    experience: "4 years",
-    area: "Reposteria",
-    cv: "estesieselultimo.pdf",
-    lastJobs: jobs,
+    let chefs = JSON.parse(localStorage.getItem('chefs'));
+    if (chefs) {
+            showEmployees(chefs)
+        
+    } else {
+        console.log('No hay empleados');
+    }
 });
+    
 
 
-orantes.lastJobs.map((job) => {
+
+function showEmployees(chefs) {
+    chefs.map((chef) => {
+        console.log(chef)
+        let moreInfo = document.createElement('button');
+        let list = document.getElementById("employee");
+        moreInfo.className = 'bg-transparent h-8 w-32 text-sm mx-4 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white  px-4 border border-blue-500 hover:border-transparent rounded';
+        moreInfo.textContent =  chef.name ;
+        list.appendChild(moreInfo);
+        let index = chefs.indexOf(chef);
+        moreInfo.addEventListener('click', function () {
+            localStorage.setItem('index', index);
+            window.location = "details.html";
+            
+
+        });
+        
+
+    
+    });
+};
+
+/* chef.lastJobs.map((job) => {
     document.write(job.nameOfJob, "<br>");
     document.write(job.position, "<br>");
     document.write("<br>", "--------------------------------","<br>");
-})
-orantes.cooking();
-
+}) */

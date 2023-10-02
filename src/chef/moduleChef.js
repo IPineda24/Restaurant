@@ -12,3 +12,14 @@ class Chef extends Owner{
         console.log("estoy cocinando");
     };
 }
+
+/* class ListOfEmployee {
+    constructor({
+        employees = []
+    }) {
+        this.employees = employees;
+    }
+
+}
+const chefList = new ListOfEmployee({});
+ */
